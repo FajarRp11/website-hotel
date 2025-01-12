@@ -15,23 +15,26 @@
         <form method="POST" action="{{ route('login') }}" class="mb-4">
             @csrf
             <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
+            <x-input-group
+                type="email"
+                name="email"
+                id="email"
+                label="Email address"
+                :value="old('email')"
+                autocomplete="off"
+                required
+            />
+            <x-input-error :messages="$errors->get('email')" class="my-2" />
 
             <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
+            <x-input-group
+                type="password"
+                name="password"
+                id="password"
+                label="Password"
+                required
+            />
+            <x-input-error :messages="$errors->get('password')" class="my-2" />
 
             <div class="flex items-center justify-between my-4 gap-4 md:gap-16">
                 <label for="remember_me" class="inline-flex items-center">

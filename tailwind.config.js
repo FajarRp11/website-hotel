@@ -17,6 +17,9 @@ export default {
                 sans: ["Noto sans", ...defaultTheme.fontFamily.sans],
                 quicksand: ["Quicksand", ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                "hero-pattern": "url('../images/2.jpeg')",
+            },
         },
     },
 
