@@ -38,7 +38,7 @@
     </section>
 
     <section class="px-12 py-8 text-gray-900">
-        <h1 class="text-3xl font-bold mb-4 text-center">Our Favorite Room</h1>
+        <h1 class="text-3xl font-bold mb-4 text-center">Favorite Room</h1>
         <div class="flex justify-center items-center gap-4">
             <div class="block max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('images/1.jpg') }}" class="rounded-md" alt="hotel">
