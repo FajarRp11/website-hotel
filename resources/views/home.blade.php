@@ -39,7 +39,7 @@
 
     <section class="px-12 py-8 text-gray-900">
         <h1 class="text-3xl font-bold mb-4 text-center">Favorite Room</h1>
-        <div class="flex justify-center items-center gap-4">
+        <div class="flex justify-center items-center flex-wrap gap-4 mb-4">
             <div class="block max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('images/1.jpg') }}" class="rounded-md" alt="hotel">
                 <p class="font-semibold my-4 text-lg">Room Number: 1</p>            
@@ -61,7 +61,7 @@
             </div>
             <div class="block max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('images/1.jpg') }}" class="rounded-md" alt="hotel">
-                <p class="font-semibold my-4 text-lg">Room Number: 1</p>            
+                <p class="font-semibold my-4 text-lg">Room Number: 2</p>            
                 <h2 class="mb-2 font-semibold text-gray-900 dark:text-white">Facilities:</h2>
                 <ul class="max-w-md space-y-1 text-sm text-gray-500 list-inside dark:text-gray-400">
                     <li class="flex items-center">
@@ -80,7 +80,7 @@
             </div>
             <div class="block max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <img src="{{ asset('images/1.jpg') }}" class="rounded-md" alt="hotel">
-                <p class="font-semibold my-4 text-lg">Room Number: 1</p>            
+                <p class="font-semibold my-4 text-lg">Room Number: 3</p>            
                 <h2 class="mb-2 font-semibold text-gray-900 dark:text-white">Facilities:</h2>
                 <ul class="max-w-md space-y-1 text-sm text-gray-500 list-inside dark:text-gray-400">
                     <li class="flex items-center">
@@ -98,5 +98,6 @@
                 </ul>
             </div>
         </div>
+        <a href={{ route('customer') }} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Book Now</a>
     </section>
 </x-app-layout>

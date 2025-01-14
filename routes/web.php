@@ -1,16 +1,18 @@
 <?php
 
+use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('app');
-});
+    return view('home');
+})->name('home');
 
-Route::get('/test', function () {
-    return view('test');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+    Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
+    Route::post('/customer', [CustomerController::class, 'store'])->name('customer.store');
 });
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
