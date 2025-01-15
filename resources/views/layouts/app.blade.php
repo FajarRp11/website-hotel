@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         @vite(['resources/css/app.css','resources/js/app.js'])
     </head>
-    <body class="min-h-[2000px] bg-gray-50">
+    <body class="bg-gray-50">
         <x-navbar />
         {{ $slot }}
         

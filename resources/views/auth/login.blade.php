@@ -21,20 +21,29 @@
                 id="email"
                 label="Email address"
                 :value="old('email')"
-                autocomplete="off"
                 required
             />
             <x-input-error :messages="$errors->get('email')" class="my-2" />
 
             <!-- Password -->
-            <x-input-group
-                type="password"
-                name="password"
-                id="password"
-                label="Password"
-                required
-            />
-            <x-input-error :messages="$errors->get('password')" class="my-2" />
+            <div class="mb-6">
+                <div class="relative">
+                    <x-input-group
+                        type="password"
+                        name="password"
+                        id="password"
+                        label="Password"
+                        required
+                    />
+                    <button type="button" onclick="togglePassword('password')" class="absolute right-2 top-3 text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            </div>
 
             <div class="flex items-center justify-between my-4 gap-4 md:gap-16">
                 <label for="remember_me" class="inline-flex items-center">
@@ -53,4 +62,11 @@
         </form>
         <a href="{{ route('register') }}" class="underline text-sm text-center text-gray-600">Don't have an account? <span class="no-underline text-blue-700">Register</span></a>
     </div>
+
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+    </script>
 </x-guest-layout>

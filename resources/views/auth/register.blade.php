@@ -37,8 +37,7 @@
             <x-input-error :messages="$errors->get('email')" class="my-2" />
 
             <!-- Password -->
-             <!-- Confirm Password -->
-            <div class="mb-6">
+            <div class="mb-4">
                 <div class="relative">
                     <x-input-group
                         type="password"
@@ -55,13 +54,12 @@
                         </svg>
                     </button>
                 </div>
+                <p class="text-xs text-gray-500">* Password minimal 8 karakter</p>
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                <p class="text-xs text-gray-500 mt-1">* Pastikan password yang dimasukkan sama</p>
             </div>
 
             <!-- Confirm Password -->
-             <!-- Confirm Password -->
-            <div class="mb-6">
+            <div class="mb-4">
                 <div class="relative">
                     <x-input-group
                         type="password"
@@ -78,8 +76,8 @@
                         </svg>
                     </button>
                 </div>
+                <p class="text-xs text-gray-500">* Pastikan password yang dimasukkan sama</p>
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-                <p class="text-xs text-gray-500 mt-1">* Pastikan password yang dimasukkan sama</p>
             </div>
             <x-primary-button>
                 {{ __('Create account') }}

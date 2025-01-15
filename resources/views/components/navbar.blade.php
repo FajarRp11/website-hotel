@@ -9,20 +9,27 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap">Hotel</span>
         </a>
 
-        <!-- Right Section (User Info/Sign In & Toggle Button) -->
-        <div class="flex gap-2 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <!-- Right Section (Desktop) -->
+        <div class="hidden md:flex gap-2 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             @auth
-                <div class="hidden md:flex items-center gap-4">
-                    <span class="text-gray-900">{{ Auth::user()->name }}</span>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="text-white flex justify-center items-center gap-2 bg-gray-900 font-medium rounded-full text-sm px-4 py-2 text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="text-sm font-semibold">Logout</span>
-                        </button>
-                    </form>
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-gray-900 text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">{{ Auth::user()->name }} 
+                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                </button>
+
+                <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-2xl w-40">
+                    <ul class="py-2 text-gray-900" aria-labelledby="dropdownDefaultButton">
+                        <li>
+                            <a href="{{ route('profile.edit') }}" class="block ps-4 py-2 hover:bg-gray-100">Profile</a>
+                        </li>
+                        <li class="hover:bg-gray-100">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="w-full text-start ps-4 py-2">Log Out</button>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             @else
                 <a href="/login" class="text-white hidden md:flex justify-center items-center gap-2 bg-gray-900 font-medium rounded-full text-sm px-4 py-2 text-center">
@@ -32,47 +39,53 @@
                     <span class="text-sm font-semibold">Login</span>
                 </a>
             @endauth
-            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
-                </svg>
-            </button>
         </div>
 
-        <!-- Navbar Links -->
+        <!-- Mobile Menu Button -->
+        <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+        </button>
+
+        <!-- Mobile Menu -->
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-white text-gray-900">
+            <ul class="flex flex-col md:p-0 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:border-0 bg-white">
+                
+                <!-- Navigation Links -->
                 <li>
-                    <a href={{ route('home') }} class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:hover:text-blue-700">Home</a>
+                    <a href={{ route('home') }} class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:hover:text-blue-700">Home</a>
                 </li>
                 <li>
-                    <a href={{ route('customer') }} class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:hover:text-blue-700">Booking</a>
+                    <a href={{ route('customer') }} class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:hover:text-blue-700">Booking</a>
                 </li>
-                <!-- Sign In/User Info for Mobile -->
-                <li class="block md:hidden">
-                    @auth
-                        <div class="flex flex-col justify-center items-start gap-2">
-                            <span class="text-gray-900 py-2 px-3">{{ Auth::user()->name }}</span>
-                            <form method="POST" action="{{ route('logout') }}">
+
+                <!-- User Links (Mobile) -->
+                @auth
+                    <div class="block md:hidden border-t border-b border-gray-200 my-2">
+                        <div class="px-3 py-3 flex flex-col gap-2">
+                            <div>
+                                <p class="text-gray-900">{{ Auth::user()->name }}</p>
+                                <p class="text-gray-500 text-sm">{{ Auth::user()->email }}</p>
+                            </div>
+                            <a href="{{ route('profile.edit') }}" class="block mt-2 text-gray-900">Profile</a>
+                            <form method="POST" action="{{ route('logout') }}" class="mt-1">
                                 @csrf
-                                <button type="submit" class="text-white flex justify-center items-center gap-2 w-fit bg-gray-900 font-medium rounded-full text-sm px-4 py-2 text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                                        <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd" />
-                                    </svg>
-                                    <span class="text-sm font-semibold">Logout</span>
-                                </button>
+                                <button type="submit" class="w-full text-start text-gray-900">Log Out</button>
                             </form>
                         </div>
-                    @else
+                    </div>
+                @else
+                    <li class="block md:hidden border-t border-b border-gray-200 my-2 py-3">
                         <a href="/login" class="text-white flex justify-center items-center gap-2 w-fit bg-gray-900 font-medium rounded-full text-sm px-4 py-2 text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
                                 <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
                             </svg>
                             <span class="text-sm font-semibold">Login</span>
                         </a>
-                    @endauth
-                </li>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>
