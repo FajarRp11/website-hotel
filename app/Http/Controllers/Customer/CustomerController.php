@@ -40,17 +40,20 @@ class CustomerController extends Controller
     {
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
-            'phone_number' => 'required|string|max:15|unique:customers,phone_number',
+            'phone_number' => 'required|string|max:15',
             'address' => 'required|string|max:255',
         ]);
 
         try {
-            Customer::create($validated);
+            Customer::updateOrCreate(
+                ['user_id' => Auth::id()],
+                $validated
+            );
 
-            return redirect()->route('customer')
-                ->with('success', 'Your information has been saved successfully!');
+            return redirect()->route('booking');
         } catch (\Exception $e) {
-            return back()->with('error', 'Something went wrong! Please try again.')
+            return back()
+                ->with('error', 'Something went wrong! Please try again.')
                 ->withInput();
         }
     }

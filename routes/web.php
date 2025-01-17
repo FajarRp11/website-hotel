@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -7,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
+Route::get('/booking', [BookingController::class, 'index'])->middleware(['auth', 'verified'])->name('booking');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/customer', [CustomerController::class, 'index'])->name('customer');

@@ -8,6 +8,5 @@
     <body class="bg-gray-50">
         <x-navbar />
         {{ $slot }}
-        
     </body>
 </html>

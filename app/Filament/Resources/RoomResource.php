@@ -43,7 +43,6 @@ class RoomResource extends Resource
                     ])
                     ->required(),
                 Forms\Components\TextInput::make('description')
-                        ->required()
                         ->maxLength(65535)
                         ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
@@ -93,8 +92,9 @@ class RoomResource extends Resource
                     ->formatStateUsing(function ($state) {
                         return ucfirst($state);
                     }),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('facilities.description') 
+                Tables\Columns\TextColumn::make('description')
+                    ->placeholder('No description'),
+                Tables\Columns\TextColumn::make('facilities.name') 
                     ->listWithLineBreaks()
                     ->bulleted()
                     ->placeholder('No Facilities'),
