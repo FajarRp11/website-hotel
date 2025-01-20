@@ -14,7 +14,7 @@ Route::get('/booking', [BookingController::class, 'index'])->middleware(['auth',
 Route::post('/booking/{room}', [BookingController::class, 'store'])->middleware(['auth', 'verified'])->name('booking.store');
 
 Route::get('/my-bookings', [BookingController::class, 'myBookings'])
-    ->name('bookings.my')
+    ->name('mybooking')
     ->middleware(['auth', 'verified']);
 
 Route::post('/bookings/{transaction}/cancel', [BookingController::class, 'cancel'])->name('bookings.cancel');

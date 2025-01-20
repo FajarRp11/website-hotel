@@ -30,7 +30,7 @@
                     </svg>
                 </div>
                 <p class="text-gray-600 mb-4">You haven't made any bookings yet.</p>
-                <a href="{{ route('booking.index') }}" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                <a href="{{ route('booking') }}" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
                     Book a Room Now
                 </a>
             </div>

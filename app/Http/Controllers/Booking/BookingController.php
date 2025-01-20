@@ -49,9 +49,12 @@ class BookingController extends Controller
         // Perbaikan perhitungan jumlah hari
         $checkIn = Carbon::parse($request->check_in_date)->startOfDay();
         $checkOut = Carbon::parse($request->check_out_date)->startOfDay();
-        
-        // Gunakan max untuk memastikan minimal 1 hari
-        $numberOfDays = max(1, $checkOut->diffInDays($checkIn));
+
+        // Perhitungan jumlah hari
+        $numberOfDays = $checkIn->diffInDays($checkOut) + 1;
+
+        // Pastikan nilai dalam bentuk integer
+        $numberOfDays = (int) $numberOfDays;
 
         // Validasi ketersediaan kamar
         if (!$this->isRoomAvailable($room->id, $checkIn, $checkOut)) {
@@ -74,9 +77,9 @@ class BookingController extends Controller
         ]);
 
         // Update room status menjadi booked
-        $room->update(['room_status' => 'booked']);
+        // $room->update(['room_status' => 'booked']);
 
-        return redirect()->route('booking')
+        return redirect()->route('mybooking')
             ->with('success', 'Booking successful! Total cost: Rp. ' . number_format($totalCost, 0, ',', '.'));
     }
 
