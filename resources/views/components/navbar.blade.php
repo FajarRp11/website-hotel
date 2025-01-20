@@ -60,6 +60,9 @@
                 <li>
                     <a href={{ route('customer') }} class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:hover:text-blue-700">Booking</a>
                 </li>
+                <li>
+                    <a href={{ route('bookings.my') }} class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:hover:text-blue-700">My Booking</a>
+                </li>
 
                 <!-- User Links (Mobile) -->
                 @auth

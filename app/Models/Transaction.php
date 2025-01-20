@@ -20,6 +20,11 @@ class Transaction extends Model
         'total_cost',
     ];
 
+    protected $casts = [
+        'check_in_date' => 'date',
+        'check_out_date' => 'date',
+    ];
+
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class, 'customer_id');
@@ -48,7 +53,7 @@ class Transaction extends Model
         });
     }
 
-    private static function generateBookingNumber()
+    public static function generateBookingNumber()
     {
         $prefix = 'BK';
         $date = now()->format('Ymd');

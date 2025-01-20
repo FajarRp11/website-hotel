@@ -11,6 +11,14 @@ Route::get('/', function () {
 
 Route::get('/booking', [BookingController::class, 'index'])->middleware(['auth', 'verified'])->name('booking');
 
+Route::post('/booking/{room}', [BookingController::class, 'store'])->middleware(['auth', 'verified'])->name('booking.store');
+
+Route::get('/my-bookings', [BookingController::class, 'myBookings'])
+    ->name('bookings.my')
+    ->middleware(['auth', 'verified']);
+
+Route::post('/bookings/{transaction}/cancel', [BookingController::class, 'cancel'])->name('bookings.cancel');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
     Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
