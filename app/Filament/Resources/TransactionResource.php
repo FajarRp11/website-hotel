@@ -73,7 +73,7 @@ class TransactionResource extends Resource
                     ->required()
                     ->label('Customer Name'),
                 Forms\Components\Select::make('room_id')
-                    ->relationship('room', 'room_number', fn (Builder $query) => $query->where('room_status', 'available'))
+                    ->relationship('room', 'room_number')
                     ->required()
                     ->label('Room Number'),
                 Forms\Components\DatePicker::make('check_in_date')
@@ -93,6 +93,7 @@ class TransactionResource extends Resource
                         'pending' => 'Pending',
                         'success' => 'Success',
                         'cancelled' => 'Cancelled',
+                        'completed' => 'Completed'
                     ])
                     ->required(),
                 Forms\Components\TextInput::make('total_cost')
@@ -127,7 +128,8 @@ class TransactionResource extends Resource
                     ->numeric()
                     ->formatStateUsing(function ($state) {
                         return 'Rp ' . number_format($state, 0, ',', '.');
-                    }),
+                    })
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->formatStateUsing(function ($state) {
                         return ucfirst($state); 
@@ -137,11 +139,13 @@ class TransactionResource extends Resource
                         'pending' => 'gray',
                         'success' => 'success',
                         'cancelled' => 'danger',
+                        'completed' => 'success',
                     })
                     ->icon(fn (string $state): string => match ($state) {
                         'pending' => 'heroicon-m-clock',
                         'success' => 'heroicon-m-check-circle',
                         'cancelled' => 'heroicon-m-x-circle',
+                        'completed' => 'heroicon-m-check-circle',
                     }),
             ])
             ->filters([

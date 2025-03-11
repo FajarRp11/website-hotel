@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('booking_number', 50)->unique();
             $table->date('check_in_date');
             $table->date('check_out_date');
-            $table->enum('status', ['pending', 'success', 'cancelled'])->default('pending');
+            $table->enum('status', ['pending', 'success', 'cancelled', 'completed'])->default('pending');
             $table->integer('total_cost');
             $table->softDeletes();
             $table->timestamps();
