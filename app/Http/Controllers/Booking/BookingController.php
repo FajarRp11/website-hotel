@@ -16,7 +16,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $rooms = Room::where('room_status', 'available')->get();
+        $rooms = Room::where('room_status', 'available')->with('facilities')->get();
         return view('booking', compact('rooms'));
     }
 

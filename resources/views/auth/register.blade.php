@@ -22,7 +22,7 @@
                 required
                 autocomplete="off"
             />
-            <x-input-error :messages="$errors->get('name')" class="my-2" />
+            <x-input-error :messages="$errors->get('name')" class="my-2 text-xs" />
 
             <!-- Email Address -->
             <x-input-group
@@ -34,7 +34,7 @@
                 required
                 autocomplete
             />
-            <x-input-error :messages="$errors->get('email')" class="my-2" />
+            <x-input-error :messages="$errors->get('email')" class="my-2 text-xs" />
 
             <!-- Password -->
             <div class="mb-4">
@@ -55,7 +55,7 @@
                     </button>
                 </div>
                 <p class="text-xs text-gray-500">* Password minimal 8 karakter</p>
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <x-input-error :messages="$errors->get('password')" class="mt-2 text-xs" />
             </div>
 
             <!-- Confirm Password -->
@@ -77,7 +77,7 @@
                     </button>
                 </div>
                 <p class="text-xs text-gray-500">* Pastikan password yang dimasukkan sama</p>
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-xs" />
             </div>
             <x-primary-button>
                 {{ __('Create account') }}
